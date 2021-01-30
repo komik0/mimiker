@@ -68,14 +68,14 @@ static void do_receive(rtl8139_state_t *state) {
    */
   uint16_t size = *(uint16_t *)(state->rx_buf + state->rx_offset + 2);
 
-  struct sk_buff *skb = kmalloc(M_DEV, sizeof(struct sk_buff), M_ZERO);
-  skb->length = size;
-  skb->data = kmalloc(M_DEV, size, M_ZERO);
-  memcpy(skb->data, (void *)(state->rx_buf + state->rx_offset + 4), size);
+//  struct sk_buff *skb = kmalloc(M_DEV, sizeof(struct sk_buff), M_ZERO);
+//  skb->length = size;
+//  skb->data = kmalloc(M_DEV, size, M_ZERO);
+//  memcpy(skb->data, (void *)(state->rx_buf + state->rx_offset + 4), size);
   /* TODO: handle buffer overflow */
   /* Enqueue */
   /* TODO: WITH_MTX_LOCK { */
-  TAILQ_INSERT_TAIL(&state->rx_queue, skb, queue);
+//  TAILQ_INSERT_TAIL(&state->rx_queue, skb, queue);
 
   state->rx_offset += size + /* rtl8139 header */ 4;
 }
